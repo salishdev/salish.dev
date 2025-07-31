@@ -28,7 +28,7 @@ const posts = (await getCollection('blog')).sort(
 				padding: 0;
 			}
 			ul li {
-				border-bottom: 2px solid #000;
+				border-bottom: 2px solid var(--border-color);
 				padding: 2rem 0;
 			}
 			ul li:last-child {
@@ -42,7 +42,7 @@ const posts = (await getCollection('blog')).sort(
 			}
 			.title {
 				margin: 0 0 0.5rem 0;
-				color: #000;
+				color: var(--text-color);
 				font-size: 1.5rem;
 				font-weight: 700;
 				text-transform: uppercase;
@@ -51,7 +51,7 @@ const posts = (await getCollection('blog')).sort(
 			}
 			.date {
 				margin: 0;
-				color: #000;
+				color: var(--text-color);
 				font-size: 0.875rem;
 				font-family: monospace;
 			}
