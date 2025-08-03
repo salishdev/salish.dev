@@ -1,0 +1,99 @@
+---
+export interface Props {
+  title: string;
+  company: string;
+  dates: string;
+  companyUrl?: string;
+}
+
+const { title, company, dates, companyUrl } = Astro.props;
+---
+
+<dl class="job-header">
+  <dt class="job-title-label">Title</dt>
+  <dd class="job-title">{title}</dd>
+
+  <dt class="job-company-label">Company</dt>
+  <dd class="job-company">
+    {
+      companyUrl ? (
+        <a href={companyUrl} target="_blank" rel="noopener noreferrer">
+          {company}
+        </a>
+      ) : (
+        company
+      )
+    }
+  </dd>
+
+  <dt class="job-dates-label">Dates</dt>
+  <dd class="job-dates">{dates}</dd>
+</dl>
+
+<style>
+  .job-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .job-header dt {
+    font-weight: bold;
+    margin: 0;
+    display: none;
+  }
+
+  .job-header dd {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .job-title {
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .job-company {
+    text-align: center;
+  }
+
+  .job-company a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .job-company a:hover {
+    text-decoration: underline;
+  }
+
+  .job-dates {
+    text-align: right;
+    font-style: italic;
+  }
+
+  @media (max-width: 720px) {
+    .job-header {
+      grid-template-columns: auto 1fr;
+      gap: 0.25rem 0.5rem;
+    }
+
+    .job-header dt {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--gray-dark);
+    }
+
+    .job-title {
+      grid-column: 2;
+    }
+
+    .job-company,
+    .job-dates {
+      grid-column: 2;
+      text-align: left;
+    }
+  }
+</style>

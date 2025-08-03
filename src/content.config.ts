@@ -30,7 +30,7 @@ const pages = defineCollection({
 
 const resume = defineCollection({
   // Load Markdown files in the `src/content/resume/` directory.
-  loader: glob({ base: "./src/content/resume", pattern: "**/*.md" }),
+  loader: glob({ base: "./src/content/resume", pattern: "**/*.{md,mdx}" }),
   // Type-check frontmatter using a schema
   schema: z.object({
     name: z.string(),
