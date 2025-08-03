@@ -1,0 +1,70 @@
+---
+name: Jeremy Jones
+title: Software Engineer
+email: jeremy@salish.dev
+location: Seattle, WA
+linkedin: linkedin.com/in/banjeremy
+github: github.com/salishdev
+website: salish.dev
+---
+
+## Summary
+
+Software Engineer with over a decade of experience building scalable applications from the ground up. I'm perpetually curious and enjoy learning new things and exploring crazy ideas. I'm looking for my next challenge
+I'm currently interested in developing mobile applications, with an emphasis on native iOS development.
+I'm motivated by ...
+
+## Experience
+
+**CTO**, [_majr_](https://majr.app) July 2022–Present
+
+- Collaborated cross-functionally to communicate and integrate the company's technological vision, ensuring alignment with business objectives
+- Led the successful transition to more flexible and cost-effective cloud-based infrastructure, which resulted in a reduction of costs by 70%.
+- Developed and deployed effective monetization strategies, leading to significantly increased revenue
+- Architected and implemented a streaming video on demand (VOD) system, optimizing media delivery for an enhanced user experience across diverse network environments
+- Designed and developed a user-centric **iOS** application in **Swift**, successfully navigating the **App Store** submission and approval process to bring the product to market
+
+**Consulting Software Engineer**, [_majr_](https://majr.app) Nov 2021–July 2022
+
+- Full Stack workhorse scaling an idea from prototype to MVP to production
+- Work with Product to gather requirements and estimate effort
+- Cloud architecture using IaC tools like **terraform**
+- CI/CD with Github Actions
+- Backend **GraphQL** API
+
+**Engineering Manager**, [_HCA Healthcare_](https://hcahealthcare.com/) May 2019–Nov 2021
+
+- Contributing manager, overseeing all engineering efforts within the organization
+- Spearheaded the development of an innovative solution for workforce planning using **React**, **Typescript**, and **Go** that seamlessly replaced thousands of spreadsheets—integrating a real-time interactive interface used by thousands of hiring managers and recruiters, significantly improving efficiency and reducing process fragility
+
+**Staff Software Engineer**, [_HCA Healthcare_](https://hcahealthcare.com/) Dec 2016–May 2019
+
+- Constructed an insights dashboard using **Go**, **Typescript**, **React**, and **D3** efficiently serving thousands of internal users and dramatically improving data accessibility and decision-making processes within the organization
+- Established **CI/CD** pipelines using **Python** and **Github Actions**, facilitating seamless deployments to both on-premises **Kubernetes** and **Azure**
+- Engineered a comprehensive data platform using **Python**, architecting robust data pipelines from legacy on-prem databases to **Azure**- Data Lake, thereby enabling advanced analytics and data science capabilities with **Databricks**, and efficient application workloads
+
+**Senior Application Engineer**, [_Built Technologies_](https://getbuilt.com/) Aug 2015–Dec 2016
+
+- Facilitated the ambitious transition from a monolithic web application to a highly scalable and maintainable microservices architecture on **AWS**, dramatically improving system modularity, scalability, and resilience
+- Modernized a legacy desktop web application by implementing Responsive Web Design (RWD) principles, substantially improving user interaction and accessibility across various devices
+- Crafted cross-platform mobile application for **iOS** and Android using, successfully delivering consistent functionality and user experience across different platforms
+
+**Software Developer**, [_2-COM_](http://2-com.net) Jul 2013–Aug 2015
+
+- Constructed a portfolio of meticulously designed high-traffic marketing websites that significantly enhanced the online presence of various brands, honing my expertise in **CSS**
+- Modularized core component of the SaaS product that managed inventory and marketing content for these websites, allowing us to easily swap out third party integrations
+- Identified and addressed performance bottlenecks in the system and successfully designed and implemented a caching solution that drastically reduced request times, improving some from 4s to under 100ms
+
+**Software Developer**, _Deloitte Consulting_, Jul 2012–Jul 2013
+
+- Joined as the pioneering software engineer on a team designing and building a reservations app for restaurants using **JavaScript**, **HTML**, **CSS**, and **Cordova**
+- Grew the engineering team from one to four engineers by recruiting additional talent to propel project development
+
+**Undergraduate Research Assistant**, _University of Southern Mississippi_ Aug 2010–Jul 2012
+
+- Led an initiative to modernize legacy 3D simulation engine with **JavaScript**, **Three.js** and **WebGL**, resulting in improved compatibility and performance, while also reducing complexity.
+
+## Education
+
+- Master of Computer Science (hiatus) – University of Illinois Urbana-Champaign, 2019–2021
+- Bachelor of Science in Computer Science – University of Southern Mississippi, 2008–2012

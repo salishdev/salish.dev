@@ -1,0 +1,73 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getEntry, render } from "astro:content";
+
+import "../styles/resume.css";
+const resume = await getEntry("resume", "resume");
+const { Content } = await render(resume);
+const { name, title, email, location, linkedin, github, website } = resume.data;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Resume`} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="cv-container">
+        <div class="cv-actions no-print">
+          <button onclick="window.print()">Print PDF</button>
+          <a href="/resume.pdf" download>
+            <button>Download ATS-Friendly PDF</button>
+          </a>
+        </div>
+        <div class="cv-page">
+          <div class="cv-header">
+            <h1>{name}</h1>
+            <div class="title">{title}</div>
+            <div class="cv-contact">
+              <span><a href={`mailto:${email}`}>{email}</a></span>
+              <span>{location}</span>
+              {
+                linkedin && (
+                  <span>
+                    <a href={`https://${linkedin}`} target="_blank">
+                      LinkedIn
+                    </a>
+                  </span>
+                )
+              }
+              {
+                github && (
+                  <span>
+                    <a href={`https://${github}`} target="_blank">
+                      GitHub
+                    </a>
+                  </span>
+                )
+              }
+              {
+                website && (
+                  <span>
+                    <a href={`https://${website}`} target="_blank">
+                      Website
+                    </a>
+                  </span>
+                )
+              }
+            </div>
+          </div>
+          <div class="cv-content">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

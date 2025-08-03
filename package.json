@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run generate-pdf",
+    "build:ci": "astro build",
+    "generate-pdf": "wrangler pages dev ./dist --port 4321 & sleep 3 && node scripts/generate-pdf.js && kill $!",
     "preview": "astro build && wrangler pages dev",
     "astro": "astro",
     "deploy": "astro build && wrangler pages deploy",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.1.0",
+    "puppeteer": "^24.15.0",
     "wrangler": "^4.26.1"
   }
 }

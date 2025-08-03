@@ -1,0 +1,125 @@
+/* Backbone CSS for Resume Template 1 */
+
+/* Basic */
+
+.cv-page p,
+.cv-page li,
+.cv-page dl {
+  margin: 0;
+}
+
+/* Headings */
+
+.cv-page h1,
+.cv-page h2,
+.cv-page h3 {
+  font-weight: bold;
+}
+
+.cv-page h1 {
+  font-size: 2.13em;
+}
+
+.cv-page h2,
+.cv-page h3 {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+.cv-page h2 {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+/* Lists */
+
+.cv-page ul,
+.cv-page ol {
+  padding-left: 1.5em;
+  margin: 0.2em 0;
+}
+
+.cv-page ul {
+  list-style-type: circle;
+}
+
+.cv-page ol {
+  list-style-type: decimal;
+}
+
+/* Definition Lists */
+
+.cv-page dl {
+  display: flex;
+}
+
+.cv-page dl dt,
+.cv-page dl dd:not(:last-child) {
+  flex: 1;
+}
+
+/* Tex */
+
+.cv-page :not(span.katex-display) > span.katex {
+  font-size: 1em !important;
+}
+
+/* SVG & Images */
+
+.cv-page svg.iconify {
+  vertical-align: -0.2em;
+}
+
+.cv-page img {
+  max-width: 100%;
+}
+
+/* Header */
+
+.cv-page .resume-header {
+  text-align: center;
+}
+
+.cv-page .resume-header h1 {
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cv-page .resume-header-item:not(.no-separator)::after {
+  content: " | ";
+}
+
+/* Citations */
+
+.cv-page [data-scope="cross-ref"][data-part="definitions"] {
+  padding-left: 1.2em;
+}
+
+.cv-page [data-scope="cross-ref"][data-part="definition"] p {
+  margin-left: 0.5em;
+}
+
+.cv-page [data-scope="cross-ref"][data-part="definition"]::marker {
+  content: attr(data-label);
+}
+
+.cv-page [data-scope="cross-ref"][data-part="reference"] {
+  font-size: 100%;
+  top: 0;
+}
+
+/* Dark & print mode */
+/* You might want to comment out the following lines if you change the background or text color. */
+
+.dark .cv-page [data-scope="vue-smart-pages"][data-part="page"] {
+  background-color: hsl(213, 12%, 15%);
+  color: hsl(216, 12%, 84%);
+}
+
+@media print {
+  .dark .cv-page [data-scope="vue-smart-pages"][data-part="page"] {
+    background-color: white;
+    color: black;
+  }
+}
