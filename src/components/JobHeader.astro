@@ -10,11 +10,9 @@ const { title, company, dates, companyUrl } = Astro.props;
 ---
 
 <dl class="job-header">
-  <dt class="job-title-label">Title</dt>
-  <dd class="job-title">{title}</dd>
+  <dt class="title"><strong>{title}</strong></dt>
 
-  <dt class="job-company-label">Company</dt>
-  <dd class="job-company">
+  <dd class="company">
     {
       companyUrl ? (
         <a href={companyUrl} target="_blank" rel="noopener noreferrer">
@@ -26,11 +24,24 @@ const { title, company, dates, companyUrl } = Astro.props;
     }
   </dd>
 
-  <dt class="job-dates-label">Dates</dt>
-  <dd class="job-dates">{dates}</dd>
+  <dd class="dates">{dates}</dd>
 </dl>
 
 <style>
+  dl {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+  }
+
+  dl dt,
+  dl dd:not(:last-child) {
+    flex: 1;
+  }
+</style>
+
+<!-- <style>
   .job-header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -81,7 +92,7 @@ const { title, company, dates, companyUrl } = Astro.props;
     }
 
     .job-header dt {
-      display: block;
+      /*display: block;*/
       font-size: 0.875rem;
       color: var(--gray-dark);
     }
@@ -96,4 +107,4 @@ const { title, company, dates, companyUrl } = Astro.props;
       text-align: left;
     }
   }
-</style>
+</style> -->

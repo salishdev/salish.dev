@@ -1,125 +1,175 @@
-/*/* Backbone CSS for Resume Template 1 */
+@import url("https://fonts.googleapis.com/css2?family=Minion+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap");
 
-/* Basic */
-
-.cv-page p,
-.cv-page li,
-.cv-page dl {
-  margin: 0;
+.cv-container {
+  max-width: 8.5in;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-/* Headings */
-
-.cv-page h1,
-.cv-page h2,
-.cv-page h3 {
-  font-weight: bold;
+.cv-actions {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-.cv-page h1 {
-  font-size: 2.13em;
+.cv-actions button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--border-color);
+  background: var(--bg-color);
+  color: var(--text-color);
+  cursor: pointer;
+  font-family: inherit;
 }
 
-.cv-page h2,
-.cv-page h3 {
-  margin-bottom: 5px;
-  font-size: 1.2em;
+.cv-actions button:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
 }
 
-.cv-page h2 {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+.cv-page {
+  font-family: "Minion Pro", Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
-/* Lists */
-
-.cv-page ul,
-.cv-page ol {
-  padding-left: 1.5em;
-  margin: 0.2em 0;
+/* Header styling */
+.cv-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1.5rem;
 }
 
-.cv-page ul {
-  list-style-type: circle;
+.cv-header h1 {
+  font-family: "Minion Pro", Georgia, "Times New Roman", serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
 }
 
-.cv-page ol {
-  list-style-type: decimal;
+.cv-header .title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-color);
 }
 
-/* Definition Lists */
-
-.cv-page dl {
+.cv-contact {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.95rem;
 }
 
-.cv-page dl dt,
-.cv-page dl dd:not(:last-child) {
-  flex: 1;
+.cv-contact span {
+  white-space: nowrap;
 }
 
-/* Tex */
-
-.cv-page :not(span.katex-display) > span.katex {
-  font-size: 1em !important;
+.cv-contact a {
+  color: var(--link-color);
+  text-decoration: none;
 }
 
-/* SVG & Images */
-
-.cv-page svg.iconify {
-  vertical-align: -0.2em;
+.cv-contact a:hover {
+  text-decoration: underline;
 }
 
-.cv-page img {
-  max-width: 100%;
+/* Content styling */
+.cv-content {
+  font-family: "Minion Pro", Georgia, "Times New Roman", serif;
 }
 
-/* Header */
-
-.cv-page .resume-header {
-  text-align: center;
+.cv-content h1,
+.cv-content h2,
+.cv-content h3,
+.cv-content h4,
+.cv-content h5,
+.cv-content h6 {
+  font-family: "Minion Pro", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
 }
 
-.cv-page .resume-header h1 {
-  text-align: center;
-  line-height: 1;
-  margin-bottom: 8px;
+.cv-content h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.25rem;
 }
 
-.cv-page .resume-header-item:not(.no-separator)::after {
-  content: " | ";
+.cv-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
-/* Citations */
-
-.cv-page [data-scope="cross-ref"][data-part="definitions"] {
-  padding-left: 1.2em;
+.cv-content p,
+.cv-content li {
+  font-size: 1rem;
 }
 
-.cv-page [data-scope="cross-ref"][data-part="definition"] p {
-  margin-left: 0.5em;
+.cv-content ul,
+.cv-content ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
 }
 
-.cv-page [data-scope="cross-ref"][data-part="definition"]::marker {
-  content: attr(data-label);
+.cv-content ul {
+  list-style-type: disc;
 }
 
-.cv-page [data-scope="cross-ref"][data-part="reference"] {
-  font-size: 100%;
-  top: 0;
+.cv-content strong,
+.cv-content b {
+  font-weight: 600;
 }
 
-/* Dark & print mode */
-/* You might want to comment out the following lines if you change the background or text color. */
-
-.dark .cv-page [data-scope="vue-smart-pages"][data-part="page"] {
-  background-color: hsl(213, 12%, 15%);
-  color: hsl(216, 12%, 84%);
-}
-
+/* Print styles */
 @media print {
-  .dark .cv-page [data-scope="vue-smart-pages"][data-part="page"] {
-    background-color: white;
-    color: black;
+  .no-print {
+    display: none !important;
   }
-}*/
+
+  .cv-page {
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .cv-container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cv-content h2 {
+    break-after: avoid;
+  }
+
+  .cv-content h3 {
+    break-after: avoid;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .cv-container {
+    padding: 1rem;
+  }
+
+  .cv-page {
+    padding: 1rem;
+  }
+
+  .cv-header h1 {
+    font-size: 2rem;
+  }
+
+  .cv-contact {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

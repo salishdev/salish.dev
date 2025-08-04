@@ -13,7 +13,7 @@
   --gray-dark: 34, 41, 57;
   --gray-gradient: #fff, #fff;
   --box-shadow: none;
-  
+
   /* Light theme (default) */
   --bg-color: #fff;
   --text-color: #000;
@@ -30,10 +30,10 @@
     --gray: 96, 115, 159;
     --gray-light: 34, 41, 57;
     --gray-dark: 255, 255, 255;
-    --gray-gradient: #1a1a1a, #1a1a1a;
-    
+    --gray-gradient: #000, #000;
+
     /* Dark theme */
-    --bg-color: #1a1a1a;
+    --bg-color: #000;
     --text-color: #e0e0e0;
     --code-bg: rgb(34, 41, 57);
     --border-color: #e0e0e0;
@@ -70,8 +70,6 @@ body {
   line-height: 1.5;
 }
 main {
-  width: 720px;
-  max-width: calc(100% - 2em);
   margin: auto;
   padding: 3em 1em;
 }
