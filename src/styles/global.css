@@ -8,11 +8,10 @@
   --accent: #000;
   --accent-dark: #000;
   --black: 0, 0, 0;
-  --gray: 96, 115, 159;
+  --gray: 125, 125, 125;
   --gray-light: 240, 240, 240;
   --gray-dark: 34, 41, 57;
   --gray-gradient: #fff, #fff;
-  --box-shadow: none;
 
   /* Light theme (default) */
   --bg-color: #fff;
@@ -27,7 +26,7 @@
     --accent: #fff;
     --accent-dark: #fff;
     --black: 255, 255, 255;
-    --gray: 96, 115, 159;
+    --gray: 125, 125, 125;
     --gray-light: 34, 41, 57;
     --gray-dark: 255, 255, 255;
     --gray-gradient: #000, #000;
@@ -40,24 +39,22 @@
     --link-color: #fff;
   }
 }
-/*@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}*/
+
 body {
   font-family:
-    system-ui,
     -apple-system,
+    BlinkMacSystemFont,
+    avenir next,
+    avenir,
+    segoe ui,
+    helvetica neue,
+    Adwaita Sans,
+    Cantarell,
+    Ubuntu,
+    roboto,
+    noto,
+    helvetica,
+    arial,
     sans-serif;
   margin: 0;
   padding: 0;
@@ -66,8 +63,12 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: var(--text-color);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
+  letter-spacing: 0.035em;
+  font-weight: 300;
+  min-height: 100vh;
+  font-stretch: 105%;
 }
 main {
   margin: auto;
@@ -82,6 +83,14 @@ h6 {
   margin: 0 0 0.5rem 0;
   color: rgb(var(--black));
   line-height: 1.2;
+  font-family:
+    Menlo,
+    Consolas,
+    Monaco,
+    Adwaita Mono,
+    Liberation Mono,
+    Lucida Console,
+    monospace;
 }
 h1 {
   font-size: 3.052em;

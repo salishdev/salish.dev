@@ -9,7 +9,7 @@ import HeaderLink from "./HeaderLink.astro";
     <div class="internal-links">
       <HeaderLink href="/">About</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/resume">Resume</HeaderLink>
+      <a href="/resume.pdf" target="_blank">Resume</a>
     </div>
     <div class="social-links">
       <a href="https://www.linkedin.com/in/banjeremy" target="_blank">
@@ -38,7 +38,6 @@ import HeaderLink from "./HeaderLink.astro";
     margin: 0;
     padding: 0 1em;
     background: var(--bg-color);
-    box-shadow: 0 2px 8px rgba(var(--black), 5%);
   }
   h2 {
     margin: 0;
@@ -59,6 +58,7 @@ import HeaderLink from "./HeaderLink.astro";
     color: var(--text-color);
     border-bottom: 4px solid transparent;
     text-decoration: none;
+    letter-spacing: 0.1em;
   }
   nav a.active {
     text-decoration: none;
