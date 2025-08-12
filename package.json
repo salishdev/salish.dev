@@ -10,7 +10,8 @@
     "preview": "astro build && wrangler pages dev",
     "astro": "astro",
     "deploy": "astro build && wrangler pages deploy",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "fetch-resume": "gh release download --repo salishdev/resume --pattern \"resume.*\" --clobber --dir public"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.0",

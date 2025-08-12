@@ -20,10 +20,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install gh
+        uses: cli/cli@v2
+
+      - name: Download latest resume.pdf from releases
+        run: |
+          gh release download --repo salishdev/resume --pattern "resume.*" --clobber --dir public
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
