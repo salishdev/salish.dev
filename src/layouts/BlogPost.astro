@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
@@ -14,73 +16,51 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
-    <style>
-      main {
-        width: calc(100% - 2em);
-        max-width: 100%;
-        margin: 0;
-      }
-      .hero-image {
-        width: 100%;
-      }
-      .hero-image img {
-        display: block;
-        margin: 0 auto;
-        border-radius: 12px;
-      }
-      .prose {
-        width: 720px;
-        max-width: calc(100% - 2em);
-        margin: auto;
-        padding: 1em;
-        color: rgb(var(--gray-dark));
-      }
-      .title {
-        margin-bottom: 1em;
-        padding: 1em 0;
-        text-align: center;
-        line-height: 1;
-      }
-      .title h1 {
-        margin: 0 0 0.5em 0;
-      }
-      .date {
-        margin-bottom: 0.5em;
-        color: rgb(var(--gray));
-      }
-      .last-updated-on {
-        font-style: italic;
-      }
-    </style>
   </head>
 
   <body>
     <Header />
-    <main>
-      <article>
-        <div class="hero-image">
+    <main class="max-w-full m-0 mt-8">
+      <article class="w-[720px] mx-auto">
+        <div class="w-full">
           {
             heroImage && (
-              <Image width={1020} height={510} src={heroImage} alt="" />
+              <Image
+                class="block mx-auto rounded-xl"
+                width={1020}
+                height={510}
+                src={heroImage}
+                alt=""
+              />
             )
           }
         </div>
-        <div class="prose">
-          <div class="title">
-            <div class="date">
+        <div class="mx-auto p-4">
+          <div
+            class="mb-4 text-lg font-light tracking-semi-wide text-center leading-none"
+          >
+            <div class="mb-3 text-gray-500">
               <FormattedDate date={pubDate} />
               {
                 updatedDate && (
-                  <div class="last-updated-on">
+                  <div>
                     Last updated on <FormattedDate date={updatedDate} />
                   </div>
                 )
               }
             </div>
-            <h1>{title}</h1>
-            <hr />
+            <h1
+              class="font-mono font-bold text-[3rem] leading-[1.2em] tracking-semi-wide mx-auto text-black dark:text-white"
+            >
+              {title}
+            </h1>
+            <hr class="my-8" />
           </div>
-          <slot />
+          <div
+            class="prose prose-lg mx-auto font-light tracking-semi-wide leading-6"
+          >
+            <slot />
+          </div>
         </div>
       </article>
     </main>

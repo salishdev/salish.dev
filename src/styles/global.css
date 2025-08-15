@@ -1,191 +1,51 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
-  --accent: #000;
-  --accent-dark: #000;
-  --black: 0, 0, 0;
-  --gray: 125, 125, 125;
-  --gray-light: 240, 240, 240;
-  --gray-dark: 34, 41, 57;
-  --gray-gradient: #fff, #fff;
-
-  /* Light theme (default) */
-  --bg-color: #fff;
-  --text-color: #000;
-  --code-bg: rgb(240, 240, 240);
-  --border-color: #000;
-  --link-color: #000;
+  --color-foreground: var(--color-zinc-900);
+  --color-background: var(--color-zinc-50);
+  --font-stretch: 105%;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --accent: #fff;
-    --accent-dark: #fff;
-    --black: 255, 255, 255;
-    --gray: 125, 125, 125;
-    --gray-light: 34, 41, 57;
-    --gray-dark: 255, 255, 255;
-    --gray-gradient: #000, #000;
-
-    /* Dark theme */
-    --bg-color: #000;
-    --text-color: #e0e0e0;
-    --code-bg: rgb(34, 41, 57);
-    --border-color: #e0e0e0;
-    --link-color: #fff;
+    --color-foreground: var(--color-zinc-100);
+    --color-background: var(--color-zinc-900);
   }
+}
+
+/* override prose styles to inherit colors  */
+.prose {
+  --tw-prose-body: inherit;
+  --tw-prose-headings: inherit;
+  --tw-prose-lead: inherit;
+  --tw-prose-links: inherit;
+  --tw-prose-bold: inherit;
+  --tw-prose-counters: inherit;
+  --tw-prose-bullets: inherit;
+  --tw-prose-quotes: inherit;
+  --tw-prose-quote-borders: inherit;
+  --tw-prose-captions: inherit;
+  --tw-prose-code: inherit;
+  --tw-prose-pre-code: inherit;
+  --tw-prose-pre-bg: inherit;
+  --tw-prose-th-borders: inherit;
+  --tw-prose-td-borders: inherit;
+}
+
+@theme {
+  --tracking-semi-wide: 0.035em;
+}
+
+html {
+  color-scheme: light dark;
 }
 
 body {
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    avenir next,
-    avenir,
-    segoe ui,
-    helvetica neue,
-    Adwaita Sans,
-    Cantarell,
-    Ubuntu,
-    roboto,
-    noto,
-    helvetica,
-    arial,
-    sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  background: var(--bg-color);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  color: var(--text-color);
-  font-size: 18px;
-  line-height: 1.5;
-  letter-spacing: 0.035em;
-  font-weight: 300;
-  min-height: 100vh;
-  font-stretch: 105%;
-}
-main {
-  margin: auto;
-  padding: 3em 1em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 0.5rem 0;
-  color: rgb(var(--black));
-  line-height: 1.2;
-  font-family:
-    Menlo,
-    Consolas,
-    Monaco,
-    Adwaita Mono,
-    Liberation Mono,
-    Lucida Console,
-    monospace;
-}
-h1 {
-  font-size: 3.052em;
-}
-h2 {
-  font-size: 2.441em;
-}
-h3 {
-  font-size: 1.953em;
-}
-h4 {
-  font-size: 1.563em;
-}
-h5 {
-  font-size: 1.25em;
-}
-strong,
-b {
-  font-weight: 700;
-}
-a {
-  color: var(--link-color);
-}
-a:hover {
-  color: var(--link-color);
-}
-p {
-  margin-bottom: 1em;
-}
-.prose p {
-  margin-bottom: 2em;
-}
-textarea {
-  width: 100%;
-  font-size: 16px;
-}
-input {
-  font-size: 16px;
-}
-table {
-  width: 100%;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0;
-}
-code {
-  padding: 2px 5px;
-  background-color: var(--code-bg);
-  border-radius: 0;
-}
-pre {
-  padding: 1.5em;
-  border-radius: 0;
-  border: 2px solid var(--border-color);
-}
-pre > code {
-  all: unset;
-}
-blockquote {
-  border-left: 6px solid var(--border-color);
-  padding: 0 0 0 20px;
-  margin: 0px;
-  font-size: 1em;
-  font-weight: 700;
-}
-hr {
-  border: none;
-  border-top: 2px solid var(--border-color);
-  margin: 2rem 0;
-}
-@media (max-width: 720px) {
-  body {
-    font-size: 18px;
-  }
-  main {
-    padding: 1em;
-  }
-}
-
-.sr-only {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-  clip: rect(1px 1px 1px 1px);
-  /* maybe deprecated but we need to support legacy browsers */
-  clip: rect(1px, 1px, 1px, 1px);
-  /* modern browsers, clip-path works inwards from each corner */
-  clip-path: inset(50%);
-  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-  white-space: nowrap;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-stretch: var(--font-stretch);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }

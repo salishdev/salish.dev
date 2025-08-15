@@ -6,14 +6,21 @@ import { defineConfig } from "astro/config";
 
 import cloudflare from "@astrojs/cloudflare";
 
+import tailwindcss from "@tailwindcss/vite";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
   integrations: [mdx(), sitemap()],
+
   adapter: cloudflare({
     platformProxy: {
       enabled: true,
     },
     imageService: "compile",
   }),
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
