@@ -3,16 +3,22 @@ import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
-<header>
-  <nav>
-    <h2><a href="/">{SITE_TITLE}</a></h2>
-    <div class="internal-links">
+<header class="m-0 px-4">
+  <nav class="flex items-center justify-between">
+    <h2 class="m-0 tracking-widest font-mono font-bold text-lg">
+      <a href="/" class="no-underline">{SITE_TITLE}</a>
+    </h2>
+    <div class="internal-links flex">
       <HeaderLink href="/">About</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/resume">Resume</HeaderLink>
     </div>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/banjeremy" target="_blank">
+    <div class="social-links flex max-md:hidden">
+      <a
+        href="https://www.linkedin.com/in/banjeremy"
+        target="_blank"
+        class="flex py-4 px-2 text-zinc-900 dark:text-zinc-100 border-b-4 border-transparent no-underline tracking-[0.1em]"
+      >
         <span class="sr-only">Go to my LinkedIn Profile</span>
         <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
           <path
@@ -21,7 +27,11 @@ import HeaderLink from "./HeaderLink.astro";
           ></path>
         </svg>
       </a>
-      <a href="https://github.com/salishdev" target="_blank">
+      <a
+        href="https://github.com/salishdev"
+        target="_blank"
+        class="flex py-4 px-2 text-zinc-900 dark:text-zinc-100 border-b-4 border-transparent no-underline tracking-[0.1em]"
+      >
         <span class="sr-only">Go to my GitHub repo</span>
         <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
           ><path
@@ -33,44 +43,3 @@ import HeaderLink from "./HeaderLink.astro";
     </div>
   </nav>
 </header>
-<style>
-  header {
-    margin: 0;
-    padding: 0 1em;
-    background: var(--bg-color);
-  }
-  h2 {
-    margin: 0;
-    font-size: 1em;
-  }
-
-  h2 a,
-  h2 a.active {
-    text-decoration: none;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  nav a {
-    padding: 1em 0.5em;
-    color: var(--text-color);
-    border-bottom: 4px solid transparent;
-    text-decoration: none;
-    letter-spacing: 0.1em;
-  }
-  nav a.active {
-    text-decoration: none;
-    border-bottom-color: var(--accent);
-  }
-  .social-links,
-  .social-links a {
-    display: flex;
-  }
-  @media (max-width: 720px) {
-    .social-links {
-      display: none;
-    }
-  }
-</style>
