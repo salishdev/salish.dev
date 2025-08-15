@@ -31,6 +31,15 @@
   --tw-prose-pre-bg: inherit;
   --tw-prose-th-borders: inherit;
   --tw-prose-td-borders: inherit;
+
+  :where(code):not(
+      :where([class~="not-prose"], [class~="not-prose"] *)
+    )::before,
+  :where(code):not(
+      :where([class~="not-prose"], [class~="not-prose"] *)
+    )::after {
+    content: "";
+  }
 }
 
 @theme {
@@ -48,4 +57,7 @@ body {
   transition:
     background-color 0.2s,
     color 0.2s;
+  max-width: 1024px;
+  margin: 0 auto;
+  min-height: 100vh;
 }

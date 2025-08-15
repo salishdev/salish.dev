@@ -9,10 +9,10 @@ const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
 
 const baseClasses =
-  "text-lg inline-block py-1 px-2 mx-2 border-b-2 no-underline tracking-[0.1em]";
+  "sm:text-lg inline-block py-1 px-2 mx-2 border-b-2 no-underline tracking-[0.1em]";
 const activeClasses = isActive
-  ? "border-black dark:border-white"
-  : "font-thin border-transparent";
+  ? "border-black dark:border-white font-bold dark:font-normal"
+  : "dark:font-thin border-transparent";
 ---
 
 <a

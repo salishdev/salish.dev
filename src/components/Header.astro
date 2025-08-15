@@ -4,8 +4,10 @@ import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header class="m-0 px-4">
-  <nav class="flex items-center justify-between">
-    <h2 class="m-0 tracking-widest font-mono font-bold text-lg">
+  <nav class="flex-col sm:flex-row flex items-center justify-between">
+    <h2
+      class="m-0 my-4 sm:my-0 tracking-widest font-mono font-bold text-xl sm:text-lg"
+    >
       <a href="/" class="no-underline">{SITE_TITLE}</a>
     </h2>
     <div class="internal-links flex">
@@ -13,7 +15,7 @@ import HeaderLink from "./HeaderLink.astro";
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/resume">Resume</HeaderLink>
     </div>
-    <div class="social-links flex max-md:hidden">
+    <div class="social-links hidden sm:flex">
       <a
         href="https://www.linkedin.com/in/banjeremy"
         target="_blank"
