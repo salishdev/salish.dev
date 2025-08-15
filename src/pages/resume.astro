@@ -2,70 +2,342 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { getEntry, render } from "astro:content";
+import { SITE_DESCRIPTION } from "../consts";
+import resumeData from "../../public/resume.json";
 
-import "../styles/resume.css";
-const resume = await getEntry("resume", "resume");
-const { Content } = await render(resume);
-const { name, title, email, location, linkedin, github, website } = resume.data;
+const { basics, work, skills, education, projects } = resumeData;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={`Resume`} description={SITE_DESCRIPTION} />
+    <BaseHead title="Resume" description={SITE_DESCRIPTION} />
+    <style>
+      .resume-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+      }
+
+      .download-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        padding: 0.5rem 1rem;
+        background-color: var(--accent);
+        color: var(--bg-color);
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+      }
+
+      .download-link:hover {
+        opacity: 0.9;
+      }
+
+      .resume-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--border-color, #e5e5e5);
+      }
+
+      .resume-header h1 {
+        margin: 0 0 0.5rem 0;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .resume-header .label {
+        font-size: 1.25rem;
+        color: var(--text-muted, #666);
+        margin-bottom: 0.5rem;
+      }
+
+      .resume-header .summary {
+        margin: 1rem 0;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .contact-info a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .contact-info a:hover {
+        text-decoration: underline;
+      }
+
+      .resume-section {
+        margin-bottom: 2rem;
+      }
+
+      .resume-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-color);
+        border-bottom: 1px solid var(--border-color, #e5e5e5);
+        padding-bottom: 0.25rem;
+      }
+
+      .work-item,
+      .education-item,
+      .project-item {
+        margin-bottom: 1.5rem;
+      }
+
+      .work-header,
+      .education-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        margin-bottom: 0.5rem;
+      }
+
+      .work-title,
+      .education-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .work-company {
+        color: var(--text-muted, #666);
+      }
+
+      .work-dates,
+      .education-dates {
+        font-size: 0.9rem;
+        color: var(--text-muted, #666);
+      }
+
+      .work-summary,
+      .project-description {
+        margin: 0.5rem 0;
+      }
+
+      .highlights {
+        list-style: disc;
+        margin-left: 1.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .highlights li {
+        margin-bottom: 0.25rem;
+      }
+
+      .technologies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .tech-tag {
+        padding: 0.2rem 0.5rem;
+        background-color: var(--tag-bg, #f0f0f0);
+        color: var(--tag-color, #333);
+        border-radius: 3px;
+        font-size: 0.85rem;
+      }
+
+      .skills-group {
+        margin-bottom: 1rem;
+      }
+
+      .skills-group h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .skill-item {
+        padding: 0.2rem 0.5rem;
+        background-color: var(--tag-bg, #f0f0f0);
+        color: var(--tag-color, #333);
+        border-radius: 3px;
+        font-size: 0.9rem;
+      }
+
+      :root {
+        --border-color: #e5e5e5;
+        --text-muted: #666;
+        --tag-bg: #f0f0f0;
+        --tag-color: #333;
+      }
+
+      :root.dark {
+        --border-color: #404040;
+        --text-muted: #aaa;
+        --tag-bg: #2a2a2a;
+        --tag-color: #ddd;
+      }
+
+      @media print {
+        .download-link {
+          display: none;
+        }
+
+        .resume-container {
+          max-width: 100%;
+          padding: 0;
+        }
+      }
+    </style>
   </head>
   <body>
     <Header />
     <main>
-      <div class="cv-container">
-        <div class="cv-actions no-print">
-          <button onclick="window.print()">Print PDF</button>
-          <a href="/resume.pdf" download>
-            <button>Download ATS-Friendly PDF</button>
-          </a>
-        </div>
-        <div class="cv-page">
-          <div class="cv-header">
-            <h1>{name}</h1>
-            <div class="title">{title}</div>
-            <div class="cv-contact">
-              <span><a href={`mailto:${email}`}>{email}</a></span>
-              <span>{location}</span>
-              {
-                linkedin && (
-                  <span>
-                    <a href={`https://${linkedin}`} target="_blank">
-                      LinkedIn
-                    </a>
-                  </span>
-                )
-              }
-              {
-                github && (
-                  <span>
-                    <a href={`https://${github}`} target="_blank">
-                      GitHub
-                    </a>
-                  </span>
-                )
-              }
-              {
-                website && (
-                  <span>
-                    <a href={`https://${website}`} target="_blank">
-                      Website
-                    </a>
-                  </span>
-                )
-              }
-            </div>
+      <div class="resume-container">
+        <a href="/resume.pdf" class="download-link" download>
+          Download PDF Version
+        </a>
+
+        <section class="resume-header">
+          <h1>{basics.name}</h1>
+          <div class="label">{basics.label}</div>
+          <div class="contact-info">
+            <span>{basics.location.city}, {basics.location.region}</span>
+            <a href={`mailto:${basics.email}`}>{basics.email}</a>
+            <a href={basics.url} target="_blank">{basics.url}</a>
+            {
+              basics.profiles.map((profile) => (
+                <a href={profile.url} target="_blank">
+                  {profile.network}
+                </a>
+              ))
+            }
           </div>
-          <div class="cv-content">
-            <Content />
-          </div>
-        </div>
+          <p class="summary">{basics.summary}</p>
+        </section>
+
+        <section class="resume-section">
+          <h2>Experience</h2>
+          {
+            work.map((job) => (
+              <div class="work-item">
+                <div class="work-header">
+                  <div>
+                    <span class="work-title">{job.position}</span>
+                    <span class="work-company"> at {job.name}</span>
+                  </div>
+                  <div class="work-dates">
+                    {new Date(job.startDate).toLocaleDateString("en-US", {
+                      month: "short",
+                      year: "numeric",
+                    })}
+                    {" - "}
+                    {job.endDate
+                      ? new Date(job.endDate).toLocaleDateString("en-US", {
+                          month: "short",
+                          year: "numeric",
+                        })
+                      : "Present"}
+                  </div>
+                </div>
+                <p class="work-summary">{job.summary}</p>
+                {job.highlights && job.highlights.length > 0 && (
+                  <ul class="highlights">
+                    {job.highlights.map((highlight) => (
+                      <li>{highlight}</li>
+                    ))}
+                  </ul>
+                )}
+                {job.technologies && job.technologies.length > 0 && (
+                  <div class="technologies">
+                    {job.technologies.map((tech) => (
+                      <span class="tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))
+          }
+        </section>
+
+        <section class="resume-section">
+          <h2>Skills</h2>
+          {
+            skills.map((skillGroup) => (
+              <div class="skills-group">
+                <h3>{skillGroup.name}</h3>
+                <div class="skills-list">
+                  {skillGroup.keywords.map((skill) => (
+                    <span class="skill-item">{skill}</span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </section>
+
+        <section class="resume-section">
+          <h2>Education</h2>
+          {
+            education.map((edu) => (
+              <div class="education-item">
+                <div class="education-header">
+                  <div>
+                    <span class="education-title">{edu.studyType}</span>
+                    <span class="work-company"> - {edu.institution}</span>
+                  </div>
+                  <div class="education-dates">
+                    {new Date(edu.startDate).getFullYear()}
+                    {" - "}
+                    {new Date(edu.endDate).getFullYear()}
+                  </div>
+                </div>
+                <p>{edu.area}</p>
+              </div>
+            ))
+          }
+        </section>
+
+        {
+          projects && projects.length > 0 && (
+            <section class="resume-section">
+              <h2>Projects</h2>
+              {projects.map((project) => (
+                <div class="project-item">
+                  <div class="work-header">
+                    <span class="work-title">{project.name}</span>
+                    {project.url && (
+                      <a href={project.url} target="_blank">
+                        View Project
+                      </a>
+                    )}
+                  </div>
+                  {project.description && (
+                    <p class="project-description">{project.description}</p>
+                  )}
+                  {project.highlights && project.highlights.length > 0 && (
+                    <ul class="highlights">
+                      {project.highlights.map((highlight) => (
+                        <li>{highlight}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </section>
+          )
+        }
       </div>
     </main>
     <Footer />
