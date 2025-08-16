@@ -1,6 +1,5 @@
 ---
 title: "I’m Jeremy. I build fine apps for the web and mobile."
-description: "This template serves as a lightweight, minimally-styled starting point for anyone looking to build a personal website, blog, or portfolio with Astro."
 ---
 
 I’ve been a software engineer for the past 15 years, but my fascination with programming started much earlier. As a kid, I wrote little games in BASIC on the green-glow terminal of an IBM PC. That early spark set me on a path to spend my career exploring how software can shape the way we work and live.

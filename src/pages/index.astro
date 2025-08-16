@@ -1,17 +1,70 @@
----
+<!-- ---
 import Layout from "../layouts/BlogPost.astro";
 import { getEntry, render } from "astro:content";
 
 const aboutEntry = await getEntry("pages", "about");
 const { Content } = await render(aboutEntry);
-import { SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 ---
 
 <Layout
-  title={aboutEntry.data.title}
-  description={aboutEntry.data.description}
-  heroImage={aboutEntry.data.heroImage}
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
 >
   <Content />
 </Layout>
+ -->
+
+
+
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+const aboutEntry = await getEntry("pages", "about");
+const { Content } = await render(aboutEntry);
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, heroImage } = aboutEntry.data;
+
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <article class="max-w-[720px] mx-auto">
+    <div class="w-full">
+      {
+        heroImage && (
+          <Image
+            class="block mx-auto rounded-xl"
+            width={1020}
+            height={510}
+            src={heroImage}
+            alt=""
+          />
+        )
+      }
+    </div>
+    <div class="mx-auto p-4">
+      <div
+        class="mb-4 text-lg font-light tracking-semi-wide text-center leading-none"
+      >
+        <h1
+          class="font-mono font-bold text-[3rem] leading-[1.2em] tracking-semi-wide mx-auto text-black dark:text-white"
+        >
+          {title}
+        </h1>
+        <hr class="my-8" />
+      </div>
+      <div
+        class="prose prose-lg mx-auto font-light tracking-semi-wide leading-6"
+      >
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

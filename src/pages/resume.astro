@@ -1,7 +1,5 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE_DESCRIPTION } from "../consts";
 import resumeData from "../../public/resume.json";
 import { formatDate, parseLocalDate } from "../utils/date";
@@ -9,153 +7,143 @@ import { formatDate, parseLocalDate } from "../utils/date";
 const { basics, work, skills, education, projects } = resumeData;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title="Resume" description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <div class="max-w-4xl mx-auto px-4 py-8 print:p-0 print:max-w-full">
-        <div class="flex justify-end mb-6 print:hidden">
-          <a href="/resume.pdf" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" download>
-            Download PDF Version
-          </a>
-        </div>
+<BaseLayout title="Resume" description={SITE_DESCRIPTION}>
+  <div class="max-w-4xl mx-auto px-4 py-8 print:p-0 print:max-w-full">
+    <div class="flex justify-end mb-6 print:hidden">
+      <a href="/resume.pdf" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" download>
+        Download PDF Version
+      </a>
+    </div>
 
-        <section class="mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
-          <h1 class="text-3xl font-bold mb-2">{basics.name}</h1>
-          <div class="text-xl text-gray-600 dark:text-gray-400 mb-2">{basics.label}</div>
-          <div class="flex flex-wrap gap-4 text-sm mb-4">
-            <span>{basics.location.city}, {basics.location.region}</span>
-            <a href={`mailto:${basics.email}`} class="text-blue-600 hover:underline dark:text-blue-400">{basics.email}</a>
-            <a href={basics.url} target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">{basics.url}</a>
-            {
-              basics.profiles.map((profile) => (
-                <a href={profile.url} target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">
-                  {profile.network}
-                </a>
-              ))
-            }
-          </div>
-          <p class="text-gray-700 dark:text-gray-300">{basics.summary}</p>
-        </section>
-
-        <section class="mb-8">
-          <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Experience</h2>
-          {
-            work.map((job) => (
-              <div class="mb-6">
-                <div class="flex justify-between items-start flex-wrap mb-2">
-                  <div>
-                    <span class="font-semibold text-lg">{job.position}</span>
-                    <span class="text-gray-600 dark:text-gray-400"> at </span>
-                    <span class="tex">{job.name}</span>
-                  </div>
-                  <div class="text-sm text-gray-600 dark:text-gray-400">
-                    {formatDate(job.startDate, {
-                      month: "short",
-                      year: "numeric",
-                    })}
-                    {" - "}
-                    {job.endDate
-                      ? formatDate(job.endDate, {
-                          month: "short",
-                          year: "numeric",
-                        })
-                      : "Present"}
-                  </div>
-                </div>
-                <p class="text-gray-700 dark:text-gray-300 mb-2">{job.summary}</p>
-                {job.highlights && job.highlights.length > 0 && (
-                  <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300">
-                    {job.highlights.map((highlight) => (
-                      <li class="mb-1">{highlight}</li>
-                    ))}
-                  </ul>
-                )}
-                {job.technologies && job.technologies.length > 0 && (
-                  <div class="justify-center sm:justify-start flex flex-wrap gap-2 mt-4 mb-6">
-                    {job.technologies.map((tech) => (
-                      <span class="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-sm rounded">{tech}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))
-          }
-        </section>
-
-        <section class="mb-8">
-          <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Skills</h2>
-          {
-            skills.map((skillGroup) => (
-              <div class="mb-4">
-                <h3 class="font-semibold mb-2">{skillGroup.name}</h3>
-                <div class="flex flex-wrap gap-2">
-                  {skillGroup.keywords.map((skill) => (
-                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-sm rounded">{skill}</span>
-                  ))}
-                </div>
-              </div>
-            ))
-          }
-        </section>
-
-        <section class="mb-8">
-          <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Education</h2>
-          {
-            education.map((edu) => (
-              <div class="mb-4">
-                <div class="flex justify-between items-start flex-wrap mb-1">
-                  <div>
-                    <span class="font-semibold">{edu.studyType}</span>
-                    <span class="text-gray-600 dark:text-gray-400"> - {edu.institution}</span>
-                  </div>
-                  <div class="text-sm text-gray-600 dark:text-gray-400">
-                    {parseLocalDate(edu.startDate).getFullYear()}
-                    {" - "}
-                    {parseLocalDate(edu.endDate).getFullYear()}
-                  </div>
-                </div>
-                <p class="text-gray-700 dark:text-gray-300">{edu.area}</p>
-              </div>
-            ))
-          }
-        </section>
-
+    <section class="mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
+      <h1 class="text-3xl font-bold mb-2">{basics.name}</h1>
+      <div class="text-xl text-gray-600 dark:text-gray-400 mb-2">{basics.label}</div>
+      <div class="flex flex-wrap gap-4 text-sm mb-4">
+        <span>{basics.location.city}, {basics.location.region}</span>
+        <a href={`mailto:${basics.email}`} class="text-blue-600 hover:underline dark:text-blue-400">{basics.email}</a>
+        <a href={basics.url} target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">{basics.url}</a>
         {
-          projects && projects.length > 0 && (
-            <section class="mb-8">
-              <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Projects</h2>
-              {projects.map((project) => (
-                <div class="mb-4">
-                  <div class="flex justify-between items-start flex-wrap mb-1">
-                    <span class="font-semibold">{project.name}</span>
-                    {project.url && (
-                      <a href={project.url} target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">
-                        View Project
-                      </a>
-                    )}
-                  </div>
-                  {project.description && (
-                    <p class="text-gray-700 dark:text-gray-300 mb-2">{project.description}</p>
-                  )}
-                  {project.highlights && project.highlights.length > 0 && (
-                    <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300">
-                      {project.highlights.map((highlight) => (
-                        <li class="mb-1">{highlight}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              ))}
-            </section>
-          )
+          basics.profiles.map((profile) => (
+            <a href={profile.url} target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">
+              {profile.network}
+            </a>
+          ))
         }
       </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+      <p class="text-gray-700 dark:text-gray-300">{basics.summary}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Experience</h2>
+      {
+        work.map((job) => (
+          <div class="mb-6">
+            <div class="flex justify-between items-start flex-wrap mb-2">
+              <div>
+                <span class="font-semibold text-lg">{job.position}</span>
+                <span class="text-gray-600 dark:text-gray-400"> at </span>
+                <span class="tex">{job.name}</span>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">
+                {formatDate(job.startDate, {
+                  month: "short",
+                  year: "numeric",
+                })}
+                {" - "}
+                {job.endDate
+                  ? formatDate(job.endDate, {
+                      month: "short",
+                      year: "numeric",
+                    })
+                  : "Present"}
+              </div>
+            </div>
+            <p class="text-gray-700 dark:text-gray-300 mb-2">{job.summary}</p>
+            {job.highlights && job.highlights.length > 0 && (
+              <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300">
+                {job.highlights.map((highlight) => (
+                  <li class="mb-1">{highlight}</li>
+                ))}
+              </ul>
+            )}
+            {job.technologies && job.technologies.length > 0 && (
+              <div class="justify-center sm:justify-start flex flex-wrap gap-2 mt-4 mb-6">
+                {job.technologies.map((tech) => (
+                  <span class="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-sm rounded">{tech}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Skills</h2>
+      {
+        skills.map((skillGroup) => (
+          <div class="mb-4">
+            <h3 class="font-semibold mb-2">{skillGroup.name}</h3>
+            <div class="flex flex-wrap gap-2">
+              {skillGroup.keywords.map((skill) => (
+                <span class="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-sm rounded">{skill}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Education</h2>
+      {
+        education.map((edu) => (
+          <div class="mb-4">
+            <div class="flex justify-between items-start flex-wrap mb-1">
+              <div>
+                <span class="font-semibold">{edu.studyType}</span>
+                <span class="text-gray-600 dark:text-gray-400"> - {edu.institution}</span>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">
+                {parseLocalDate(edu.startDate).getFullYear()}
+                {" - "}
+                {parseLocalDate(edu.endDate).getFullYear()}
+              </div>
+            </div>
+            <p class="text-gray-700 dark:text-gray-300">{edu.area}</p>
+          </div>
+        ))
+      }
+    </section>
+
+    {
+      projects && projects.length > 0 && (
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Projects</h2>
+          {projects.map((project) => (
+            <div class="mb-4">
+              <div class="flex justify-between items-start flex-wrap mb-1">
+                <span class="font-semibold">{project.name}</span>
+                {project.url && (
+                  <a href={project.url} target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">
+                    View Project
+                  </a>
+                )}
+              </div>
+              {project.description && (
+                <p class="text-gray-700 dark:text-gray-300 mb-2">{project.description}</p>
+              )}
+              {project.highlights && project.highlights.length > 0 && (
+                <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300">
+                  {project.highlights.map((highlight) => (
+                    <li class="mb-1">{highlight}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>
