@@ -10,6 +10,14 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: "github-light",
+        dark: "kanagawa-wave",
+      },
+    },
+  },
   site: "https://salish.dev",
   integrations: [mdx(), sitemap()],
 
