@@ -12,232 +12,44 @@ const { basics, work, skills, education, projects } = resumeData;
 <html lang="en">
   <head>
     <BaseHead title="Resume" description={SITE_DESCRIPTION} />
-    <style>
-      .resume-container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 2rem 1rem;
-        font-family:
-          system-ui,
-          -apple-system,
-          sans-serif;
-        line-height: 1.6;
-        color: var(--text-color);
-      }
-
-      .download-link {
-        display: inline-block;
-        margin-bottom: 2rem;
-        padding: 0.5rem 1rem;
-        background-color: var(--accent);
-        color: var(--bg-color);
-        text-decoration: none;
-        border-radius: 4px;
-        font-weight: 500;
-      }
-
-      .download-link:hover {
-        opacity: 0.9;
-      }
-
-      .resume-header {
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 2px solid var(--border-color, #e5e5e5);
-      }
-
-      .resume-header h1 {
-        margin: 0 0 0.5rem 0;
-        font-size: 2rem;
-        font-weight: 700;
-      }
-
-      .resume-header .label {
-        font-size: 1.25rem;
-        color: var(--text-muted, #666);
-        margin-bottom: 0.5rem;
-      }
-
-      .resume-header .summary {
-        margin: 1rem 0;
-      }
-
-      .contact-info {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        font-size: 0.9rem;
-      }
-
-      .contact-info a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-
-      .contact-info a:hover {
-        text-decoration: underline;
-      }
-
-      .resume-section {
-        margin-bottom: 2rem;
-      }
-
-      .resume-section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--text-color);
-        border-bottom: 1px solid var(--border-color, #e5e5e5);
-        padding-bottom: 0.25rem;
-      }
-
-      .work-item,
-      .education-item,
-      .project-item {
-        margin-bottom: 1.5rem;
-      }
-
-      .work-header,
-      .education-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        margin-bottom: 0.5rem;
-      }
-
-      .work-title,
-      .education-title {
-        font-weight: 600;
-        font-size: 1.1rem;
-      }
-
-      .work-company {
-        color: var(--text-muted, #666);
-      }
-
-      .work-dates,
-      .education-dates {
-        font-size: 0.9rem;
-        color: var(--text-muted, #666);
-      }
-
-      .work-summary,
-      .project-description {
-        margin: 0.5rem 0;
-      }
-
-      .highlights {
-        list-style: disc;
-        margin-left: 1.5rem;
-        margin-top: 0.5rem;
-      }
-
-      .highlights li {
-        margin-bottom: 0.25rem;
-      }
-
-      .technologies {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-      }
-
-      .tech-tag {
-        padding: 0.2rem 0.5rem;
-        background-color: var(--tag-bg, #f0f0f0);
-        color: var(--tag-color, #333);
-        border-radius: 3px;
-        font-size: 0.85rem;
-      }
-
-      .skills-group {
-        margin-bottom: 1rem;
-      }
-
-      .skills-group h3 {
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-
-      .skills-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .skill-item {
-        padding: 0.2rem 0.5rem;
-        background-color: var(--tag-bg, #f0f0f0);
-        color: var(--tag-color, #333);
-        border-radius: 3px;
-        font-size: 0.9rem;
-      }
-
-      :root {
-        --border-color: #e5e5e5;
-        --text-muted: #666;
-        --tag-bg: #f0f0f0;
-        --tag-color: #333;
-      }
-
-      :root.dark {
-        --border-color: #404040;
-        --text-muted: #aaa;
-        --tag-bg: #2a2a2a;
-        --tag-color: #ddd;
-      }
-
-      @media print {
-        .download-link {
-          display: none;
-        }
-
-        .resume-container {
-          max-width: 100%;
-          padding: 0;
-        }
-      }
-    </style>
   </head>
   <body>
     <Header />
     <main>
-      <div class="resume-container">
-        <a href="/resume.pdf" class="download-link" download>
+      <div class="max-w-4xl mx-auto px-4 py-8 print:p-0 print:max-w-full">
+        <a href="/resume.pdf" class="inline-block mb-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 print:hidden" download>
           Download PDF Version
         </a>
 
-        <section class="resume-header">
-          <h1>{basics.name}</h1>
-          <div class="label">{basics.label}</div>
-          <div class="contact-info">
+        <section class="mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
+          <h1 class="text-3xl font-bold mb-2">{basics.name}</h1>
+          <div class="text-xl text-gray-600 dark:text-gray-400 mb-2">{basics.label}</div>
+          <div class="flex flex-wrap gap-4 text-sm mb-4">
             <span>{basics.location.city}, {basics.location.region}</span>
-            <a href={`mailto:${basics.email}`}>{basics.email}</a>
-            <a href={basics.url} target="_blank">{basics.url}</a>
+            <a href={`mailto:${basics.email}`} class="text-blue-600 hover:underline dark:text-blue-400">{basics.email}</a>
+            <a href={basics.url} target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">{basics.url}</a>
             {
               basics.profiles.map((profile) => (
-                <a href={profile.url} target="_blank">
+                <a href={profile.url} target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">
                   {profile.network}
                 </a>
               ))
             }
           </div>
-          <p class="summary">{basics.summary}</p>
+          <p class="text-gray-700 dark:text-gray-300">{basics.summary}</p>
         </section>
 
-        <section class="resume-section">
-          <h2>Experience</h2>
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Experience</h2>
           {
             work.map((job) => (
-              <div class="work-item">
-                <div class="work-header">
+              <div class="mb-6">
+                <div class="flex justify-between items-start flex-wrap mb-2">
                   <div>
-                    <span class="work-title">{job.position}</span>
-                    <span class="work-company"> at {job.name}</span>
+                    <span class="font-semibold text-lg">{job.position}</span>
+                    <span class="text-gray-600 dark:text-gray-400"> at {job.name}</span>
                   </div>
-                  <div class="work-dates">
+                  <div class="text-sm text-gray-600 dark:text-gray-400">
                     {new Date(job.startDate).toLocaleDateString("en-US", {
                       month: "short",
                       year: "numeric",
@@ -251,18 +63,18 @@ const { basics, work, skills, education, projects } = resumeData;
                       : "Present"}
                   </div>
                 </div>
-                <p class="work-summary">{job.summary}</p>
+                <p class="text-gray-700 dark:text-gray-300 mb-2">{job.summary}</p>
                 {job.highlights && job.highlights.length > 0 && (
-                  <ul class="highlights">
+                  <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300">
                     {job.highlights.map((highlight) => (
-                      <li>{highlight}</li>
+                      <li class="mb-1">{highlight}</li>
                     ))}
                   </ul>
                 )}
                 {job.technologies && job.technologies.length > 0 && (
-                  <div class="technologies">
+                  <div class="flex flex-wrap gap-2 mt-2">
                     {job.technologies.map((tech) => (
-                      <span class="tech-tag">{tech}</span>
+                      <span class="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-sm rounded">{tech}</span>
                     ))}
                   </div>
                 )}
@@ -271,15 +83,15 @@ const { basics, work, skills, education, projects } = resumeData;
           }
         </section>
 
-        <section class="resume-section">
-          <h2>Skills</h2>
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Skills</h2>
           {
             skills.map((skillGroup) => (
-              <div class="skills-group">
-                <h3>{skillGroup.name}</h3>
-                <div class="skills-list">
+              <div class="mb-4">
+                <h3 class="font-semibold mb-2">{skillGroup.name}</h3>
+                <div class="flex flex-wrap gap-2">
                   {skillGroup.keywords.map((skill) => (
-                    <span class="skill-item">{skill}</span>
+                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-sm rounded">{skill}</span>
                   ))}
                 </div>
               </div>
@@ -287,23 +99,23 @@ const { basics, work, skills, education, projects } = resumeData;
           }
         </section>
 
-        <section class="resume-section">
-          <h2>Education</h2>
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Education</h2>
           {
             education.map((edu) => (
-              <div class="education-item">
-                <div class="education-header">
+              <div class="mb-4">
+                <div class="flex justify-between items-start flex-wrap mb-1">
                   <div>
-                    <span class="education-title">{edu.studyType}</span>
-                    <span class="work-company"> - {edu.institution}</span>
+                    <span class="font-semibold">{edu.studyType}</span>
+                    <span class="text-gray-600 dark:text-gray-400"> - {edu.institution}</span>
                   </div>
-                  <div class="education-dates">
+                  <div class="text-sm text-gray-600 dark:text-gray-400">
                     {new Date(edu.startDate).getFullYear()}
                     {" - "}
                     {new Date(edu.endDate).getFullYear()}
                   </div>
                 </div>
-                <p>{edu.area}</p>
+                <p class="text-gray-700 dark:text-gray-300">{edu.area}</p>
               </div>
             ))
           }
@@ -311,25 +123,25 @@ const { basics, work, skills, education, projects } = resumeData;
 
         {
           projects && projects.length > 0 && (
-            <section class="resume-section">
-              <h2>Projects</h2>
+            <section class="mb-8">
+              <h2 class="text-2xl font-semibold mb-4 pb-1 border-b border-gray-200 dark:border-gray-700">Projects</h2>
               {projects.map((project) => (
-                <div class="project-item">
-                  <div class="work-header">
-                    <span class="work-title">{project.name}</span>
+                <div class="mb-4">
+                  <div class="flex justify-between items-start flex-wrap mb-1">
+                    <span class="font-semibold">{project.name}</span>
                     {project.url && (
-                      <a href={project.url} target="_blank">
+                      <a href={project.url} target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">
                         View Project
                       </a>
                     )}
                   </div>
                   {project.description && (
-                    <p class="project-description">{project.description}</p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-2">{project.description}</p>
                   )}
                   {project.highlights && project.highlights.length > 0 && (
-                    <ul class="highlights">
+                    <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300">
                       {project.highlights.map((highlight) => (
-                        <li>{highlight}</li>
+                        <li class="mb-1">{highlight}</li>
                       ))}
                     </ul>
                   )}
