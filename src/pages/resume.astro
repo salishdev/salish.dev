@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_DESCRIPTION } from "../consts";
 import resumeData from "../../public/resume.json";
+import { formatDate, parseLocalDate } from "../utils/date";
 
 const { basics, work, skills, education, projects } = resumeData;
 ---
@@ -53,13 +54,13 @@ const { basics, work, skills, education, projects } = resumeData;
                     <span class="tex">{job.name}</span>
                   </div>
                   <div class="text-sm text-gray-600 dark:text-gray-400">
-                    {new Date(job.startDate).toLocaleDateString("en-US", {
+                    {formatDate(job.startDate, {
                       month: "short",
                       year: "numeric",
                     })}
                     {" - "}
                     {job.endDate
-                      ? new Date(job.endDate).toLocaleDateString("en-US", {
+                      ? formatDate(job.endDate, {
                           month: "short",
                           year: "numeric",
                         })
@@ -113,9 +114,9 @@ const { basics, work, skills, education, projects } = resumeData;
                     <span class="text-gray-600 dark:text-gray-400"> - {edu.institution}</span>
                   </div>
                   <div class="text-sm text-gray-600 dark:text-gray-400">
-                    {new Date(edu.startDate).getFullYear()}
+                    {parseLocalDate(edu.startDate).getFullYear()}
                     {" - "}
-                    {new Date(edu.endDate).getFullYear()}
+                    {parseLocalDate(edu.endDate).getFullYear()}
                   </div>
                 </div>
                 <p class="text-gray-700 dark:text-gray-300">{edu.area}</p>

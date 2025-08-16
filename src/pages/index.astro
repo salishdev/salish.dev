@@ -4,6 +4,8 @@ import { getEntry, render } from "astro:content";
 
 const aboutEntry = await getEntry("pages", "about");
 const { Content } = await render(aboutEntry);
+import { SITE_DESCRIPTION } from "../consts";
+
 ---
 
 <Layout

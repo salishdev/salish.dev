@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = "salish.dev";
 export const SITE_DESCRIPTION =
-  "I’m Jeremy Jones. I build fine apps for the web and iOS.";
+  "Jeremy Jones is a full-stack software engineer with 15+ years of experience building modern web and mobile apps in React, Swift, Rust, and more.";
