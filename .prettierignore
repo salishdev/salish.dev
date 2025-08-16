@@ -1,0 +1,42 @@
+# Build outputs
+dist/
+build/
+.next/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated files
+*.min.js
+*.min.css
+
+# Documentation
+CHANGELOG.md
+LICENSE.md
+
+# Config files that should maintain specific formatting
+.gitignore
+.prettierignore
