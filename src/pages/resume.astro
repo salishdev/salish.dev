@@ -17,7 +17,7 @@ const { basics, work, skills, education, projects } = resumeData;
         </a>
       </div>
       <div class="text-xl text-gray-600 dark:text-gray-400 mb-2">{basics.label}</div>
-      <div class="flex flex-wrap gap-4 text-sm mb-4">
+      <div class="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-sm mb-4">
         <span>{basics.location.city}, {basics.location.region}</span>
         <a href={`mailto:${basics.email}`} class="text-blue-600 hover:underline dark:text-blue-400">{basics.email}</a>
         <a href={basics.url} target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">{basics.url}</a>
@@ -38,10 +38,10 @@ const { basics, work, skills, education, projects } = resumeData;
         work.map((job) => (
           <div class="mb-6">
             <div class="flex justify-between items-start flex-wrap mb-2">
-              <div>
+              <div class="flex flex-col sm:flex-row sm:items-baseline">
                 <span class="font-semibold text-lg">{job.position}</span>
-                <span class="text-gray-600 dark:text-gray-400"> at </span>
-                <span class="tex">{job.name}</span>
+                <span class="hidden sm:inline text-gray-600 dark:text-gray-400">&nbsp;at&nbsp;</span>
+                <span class="text-gray-600 dark:text-gray-400 sm:text-black sm:dark:text-white">{job.name}</span>
               </div>
               <div class="text-sm text-gray-600 dark:text-gray-400">
                 {formatDate(job.startDate, {
