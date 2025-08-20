@@ -35,7 +35,7 @@ const { title, description, heroImage } = aboutEntry.data;
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <article class="max-w-[720px] mx-auto">
+  <article class="relative">
     <div class="w-full">
       {
         heroImage && (
@@ -49,22 +49,32 @@ const { title, description, heroImage } = aboutEntry.data;
         )
       }
     </div>
-    <div class="mx-auto p-4">
-      <div
-        class="mb-4 text-lg font-light tracking-semi-wide text-center leading-none"
-      >
-        <h1
-          class="font-mono font-bold text-[3rem] leading-[1.2em] tracking-semi-wide mx-auto text-black dark:text-white"
+    <div class="relative">
+      <div class="max-w-[720px] mx-auto p-4">
+        <div
+          class="mb-4 text-lg font-light tracking-semi-wide text-center leading-none"
         >
-          {title}
-        </h1>
-        <hr class="my-8" />
+          <h1
+            class="font-mono font-bold text-[3rem] leading-[1.2em] tracking-semi-wide mx-auto text-black dark:text-white"
+          >
+            {title}
+          </h1>
+          <hr class="my-8" />
+        </div>
+        <div
+          class="prose prose-lg mx-auto font-light tracking-semi-wide leading-6"
+        >
+          <Content />
+        </div>
       </div>
-      <div
-        class="prose prose-lg mx-auto font-light tracking-semi-wide leading-6"
-      >
-        <Content />
-      </div>
+      <picture class="hidden 2xl:block 2xl:absolute 2xl:left-[calc(50%+400px)] 2xl:top-16 2xl:w-80 rotate-3">
+        <source media="(min-width: 1536px)" srcset="/portrait.jpg">
+        <img
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
+          alt="Portrait"
+          class="w-full h-auto rounded-lg opacity-90"
+        />
+      </picture>
     </div>
   </article>
 </BaseLayout>
